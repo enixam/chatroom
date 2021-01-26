@@ -87,7 +87,6 @@ export default {
 
 <style scoped>
 .chat-window {
-  background: #fafafa;
   padding: 30px 20px;
 }
 
