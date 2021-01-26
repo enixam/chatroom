@@ -14,16 +14,26 @@
 }
 
 body {
-  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+  background: url(https://picsum.photos/1536/722);
+  background-size: cover;
   color: #444;
+  overflow: hidden;
 }
+
 .container {
   width: 90%;
   max-width: 960px;
   margin: 80px auto;
   border-radius: 20px;
-  box-shadow: 2px 4px 6px rgba(28, 6, 49, 0.1);
-  background: white;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.6)
+  );
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
 }
 .error {
   color: #ff3f80;
@@ -39,6 +49,7 @@ button {
   padding: 10px 20px;
   cursor: pointer;
 }
-button:focus {
+button:focus,
+input:focus {
   outline: none;
 }
