@@ -1,3 +1,5 @@
+// currently not in use
+// need to figure out how to make this composable compatible with loading sign
 import { ref } from "vue"
 import { db } from "../firebase/config"
 
