@@ -1,18 +1,17 @@
 <template>
   <form>
+    <dot v-if="inputDisabled"></dot>
     <textarea
       placeholder="Write a message and hit enter to send ..."
       v-model="message"
       @keypress.enter.prevent="handleSubmit"
+      :class="{ disabled: inputDisabled }"
     >
     </textarea>
     <div class="error">
       {{ error }}
     </div>
   </form>
-  <teleport to="body">
-    <spinner v-if="loading"></spinner>
-  </teleport>
 </template>
 
 <script>
@@ -25,22 +24,28 @@ export default {
   setup() {
     const message = ref("");
     const loading = ref(false);
+    const inputDisabled = ref(false);
+    let tempMessage = "";
     const { user } = getUser();
     const { error, addDoc } = useCollection("messages");
     const handleSubmit = async () => {
-      loading.value = true;
+      tempMessage = message.value;
+      inputDisabled.value = true;
       const chat = {
         name: user.value.displayName,
         message: message.value,
         createdAt: timestamp(),
       };
+      message.value = "";
       await addDoc(chat);
-      loading.value = false;
-      if (!error.value) {
-        message.value = "";
+      if (error.value) {
+        message.value = tempMessage;
       }
+      tempMessage = "";
+
+      inputDisabled.value = false;
     };
-    return { message, handleSubmit, loading, error };
+    return { message, handleSubmit, error, inputDisabled };
   },
 };
 </script>
@@ -62,10 +67,16 @@ textarea {
   font-size: 1rem;
   transition: 180ms box-shadow ease-in-out;
   background-color: #f4f4f4;
+  transition: all 0.2s ease-in;
 }
 
 textarea:focus {
   box-shadow: 0 0 0 3px hsla(189, 100%, 57%, 0.795);
   outline: 3px solid transparent;
+}
+
+textarea.disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
 }
 </style>

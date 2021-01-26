@@ -80,14 +80,14 @@ export default {
       onInvalidate(() => unsub());
     });
 
-    return { formattedDocuments, documents, error, loading };
+    return { formattedDocuments, documents, error, loading, messages };
   },
 };
 </script>
 
 <style scoped>
 .chat-window {
-  padding: 30px 20px;
+  padding: 30px 20px 10px 20px;
 }
 
 .messages {

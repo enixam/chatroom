@@ -5,6 +5,7 @@ import router from './router'
 import "./assets/main.css"
 import { auth } from "./firebase/config"
 import TheSpinner from "./components/UI/TheSpinner.vue"
+import TheDot from "./components/UI/TheDot.vue"
 
 let app;
 
@@ -13,6 +14,7 @@ auth.onAuthStateChanged(() => {
         app = createApp(App)
             .use(router)
             .component("spinner", TheSpinner)
+            .component("dot", TheDot)
             .mount('#app')
     }
 })
