@@ -61,6 +61,7 @@ textarea {
   font-family: var(--main-font);
   font-size: 1rem;
   transition: 180ms box-shadow ease-in-out;
+  background-color: #f4f4f4;
 }
 
 textarea:focus {
