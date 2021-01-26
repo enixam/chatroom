@@ -1,0 +1,54 @@
+<template>
+  <nav v-if="user">
+    <div>
+      <p class="name">
+        I am <span class="display-name">{{ user.displayName }}</span>
+      </p>
+      <p class="email">logged in as {{ user.email }}</p>
+    </div>
+    <button @click="handleClick">Logout</button>
+  </nav>
+</template>
+
+<script>
+import useLogout from "../composables/useLogout";
+import getUser from "../composables/getUser";
+import { watch } from "vue";
+import { useRouter } from "vue-router";
+
+export default {
+  setup() {
+    const { error, logout } = useLogout();
+    const { user } = getUser();
+    const router = useRouter();
+    const handleClick = async () => {
+      await logout();
+    };
+    watch(user, () => {
+      if (!user.value) {
+        router.push({ name: "welcome" });
+      }
+    });
+    return { handleClick, user };
+  },
+};
+</script>
+
+<style scoped>
+nav {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav p {
+  margin: 2px auto;
+  font-size: 16px;
+  color: #444;
+}
+nav p.email {
+  font-size: 14px;
+  color: #999;
+}
+</style>
