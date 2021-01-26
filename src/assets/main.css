@@ -17,6 +17,7 @@ body {
   background: url(https://picsum.photos/1536/722);
   background-size: cover;
   color: #444;
+  overflow: hidden;
 }
 
 .container {
