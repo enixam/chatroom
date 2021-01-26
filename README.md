@@ -1,6 +1,5 @@
 # chat-room
 
-- add a loading spinner
 
 - could change display name
 
