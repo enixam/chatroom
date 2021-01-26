@@ -10,8 +10,10 @@
 #wave {
   text-align: center;
   width: 100%;
-  height: 15px;
-  margin-bottom: 15px;
+  /* the same height as textarea */
+  height: 41.6px;
+  padding: 10px;
+  margin-bottom: 6px;
 }
 #wave .dot {
   display: inline-block;

@@ -1,17 +1,16 @@
 <template>
-  <form>
-    <dot v-if="inputDisabled"></dot>
+  <form v-if="!inputDisabled">
     <textarea
       placeholder="Write a message and hit enter to send ..."
       v-model="message"
       @keypress.enter.prevent="handleSubmit"
-      :class="{ disabled: inputDisabled }"
     >
     </textarea>
     <div class="error">
       {{ error }}
     </div>
   </form>
+  <dot v-else></dot>
 </template>
 
 <script>
@@ -62,6 +61,7 @@ textarea {
   max-width: 100%;
   margin-bottom: 6px;
   padding: 10px;
+  border: none;
   border-radius: 20px;
   font-family: var(--main-font);
   font-size: 1rem;
@@ -73,10 +73,5 @@ textarea {
 textarea:focus {
   box-shadow: 0 0 0 3px hsla(189, 100%, 57%, 0.795);
   outline: 3px solid transparent;
-}
-
-textarea.disabled {
-  cursor: not-allowed;
-  background-color: #ccc;
 }
 </style>
