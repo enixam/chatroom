@@ -1,7 +1,7 @@
 # chat-room
 
 
-**TOOD**
+**TODO**
 
 - could change display name
 
