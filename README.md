@@ -1,6 +1,8 @@
 # chat-room
 
 
+**TOOD**
+
 - could change display name
 
 - divided messages by tags
