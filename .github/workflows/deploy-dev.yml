@@ -9,7 +9,8 @@ jobs:
   firebase-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: Fetch repo
+        uses: actions/checkout@master
       - name: Install node
         uses: actions/setup-node@master
       - name: Install dependencies
