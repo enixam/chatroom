@@ -22,7 +22,6 @@ import useCollection from "../composables/useCollection";
 export default {
   setup() {
     const message = ref("");
-    const loading = ref(false);
     const inputDisabled = ref(false);
     let tempMessage = "";
     const { user } = getUser();
